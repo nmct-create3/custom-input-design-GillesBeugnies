@@ -67,7 +67,19 @@
     /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
     /*  = 72px */
+
+    /* border */
+    --global-input-backgroundColor: White;
+    --global-input-borderColor: var(--global-color-neutral-950);
+    --global-input-hover-borderColor: #DCEAFF;
+    --global-input-focus-borderColor: #DCEAFF;
+    --global-input-active-borderColor: White;
+    --global-page-color: var(--global-color-neutral-950);
+    --global-page-backgroundColor: var(--global-color-neutral-050);
+
 }
+
+
 
 /*---------------------------------------/*
  # GENERIC
@@ -88,6 +100,8 @@ img {
     max-width: 100%;
 }
 
+
+
 /*---------------------------------------/*
  # ELEMENTS
 /*---------------------------------------*/
@@ -105,7 +119,11 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--global-page-color); 
+    background-color: var(--global-page-backgroundColor);
 }
+
+    
 
 /*
     Customize the background color and color to match your design.
@@ -205,7 +223,7 @@ hr {
 }
 
 a {
-
+    text-decoration: none;
     &,
     &:visited {
         transition: all var(--global-transitionTiming-alpha);
@@ -226,6 +244,7 @@ a {
 
 }
 
+
 label,
 input {
     display: block;
@@ -234,6 +253,7 @@ input {
 input::placeholder {
     color: var(--global-color-neutral-300);
 }
+
 
 /*------------------------------------*\
 #OBJECTS
@@ -459,6 +479,7 @@ input::placeholder {
     Website main logo
 */
 
+
 .c-logo {
     height: var(--global-whitespace);
     display: flex;
@@ -533,6 +554,11 @@ input::placeholder {
         padding: var(--global-whitespace-xl);
     }
 }
+.c-button{
+    background-color: red;
+}
+
+
 
 /*
     Component: Forms
@@ -550,6 +576,8 @@ input::placeholder {
     ---
     Class to put on all input="text" like form inputs
 */
+
+
 
 .c-input {
     -webkit-appearance: none;
@@ -584,11 +612,86 @@ input::placeholder {
     margin-right: var(--global-whitespace-sm);
 }
 
+
+.c-custom-option{
+    display: flex;
+    
+}
+
 /*
     Component: Label
     ---
     Class to put on all form labels
 */
+.c-custom-option__symbol .c-option--hidden{
+    display: block;
+    opacity: 0;
+
+}
+
+.c-option--hidden:checked{
+    opacity: 1;
+}
+
+
+
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+
+
+
+    fill: var(--global-color-primary-500-alpha-75);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+
+  .c-custom-option__fake-input--radio .c-custom-option__symbol {
+    height: 6px;
+    width: 6px;
+    background-color: var(--global-color-primary-500-alpha-75);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.c-custom-option__fake-input{
+    display: flex;
+    
+    width: 1rem;
+    height: 1rem;
+    border-radius: var(--global-borderRadius);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    margin-right:0.5rem;
+    border-color: var(--global-color-neutral-100);
+    margin-bottom: 0.5rem;
+
+    &:hover{
+        
+        border-color: var(--global-color-neutral-500);
+    }
+    
+
+
+}
+
+
+.c-custom-option__fake-input--radio{
+    border: var(--global-borderWidth) solid var(--global-color-neutral-200);
+    border-radius: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+}
 
 .c-label {
     margin-bottom: 0;
@@ -612,9 +715,9 @@ input::placeholder {
     font-size: 1rem;
     font-weight: 700;
     border-radius: var(--global-borderRadius);
-    border: var(--global-borderWidth) solid var(--global-color-primary-600);
-    background-color: var(--global-color-primary-500);
-    color: #fff;
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    background-color: var(--global-input-backgroundColor);
+    color: var(--global-input-color);
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     line-height: calc(var(--global-baseline) * 3);
     width: 100%;
@@ -633,6 +736,63 @@ input::placeholder {
         background-color: var(--global-color-primary-600);
         box-shadow: none;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: var(--global-color-neutral-950);
+    
+    }
+    .c-card{
+        background-color: var(--global-color-neutral-900);
+    }
+    .c-card__title{
+        color: var(--global-color-neutral-050);
+    }
+    .c-label{
+        color: var(--global-color-neutral-300)
+    }
+    .c-input{
+        background-color:var(--global-page-color) ;
+        border-color: var(--global-page-color);
+        color: var(--global-color-neutral-600);
+
+    }
+    .c-button{
+        color: var(--global-color-neutral-050);
+        background-color: #3385FF;
+
+    }
+    
+    .c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+        height: 10px;
+        width: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+    
+    
+    
+        fill: var(--global-color-primary-500-alpha-75);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        
+      }
+      .c-card__footer{
+        border-color: var(--global-page-color);
+      }
+      .c-logo__path--1 {
+        fill: var(--global-color-neutral-050);
+        }
+      .c-logo__path--2 {
+        fill: var(--global-color-neutral-050);
+        }
+        .c-logo__path--3 {
+            fill: var(--global-color-neutral-050);
+            }
 }
 
 /*------------------------------------*\
@@ -739,6 +899,7 @@ input::placeholder {
 
 .u-text-sm {
     font-size: .875rem;
+    
 }
 
 /*
@@ -1240,3 +1401,5 @@ input::placeholder {
         flex-basis: 100% !important;
     }
 }
+
+
